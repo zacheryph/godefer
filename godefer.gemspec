@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Zachery Hostens"]
   spec.email         = ["zacheryph@gmail.com"]
 
-  spec.summary       = %q{Go's defer... for Ruby}
-  spec.description   = %q{Go's defer functionality in ruby. Never forget to do something.}
+  spec.summary       = %q(Go's defer... for Ruby)
+  spec.description   = %q(Go's defer functionality in ruby. Never forget to do something.)
   spec.homepage      = "https://github.com/zacheryph/godefer"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
