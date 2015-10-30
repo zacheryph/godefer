@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Defer::VERSION
   spec.authors       = ["Zachery Hostens"]
   spec.email         = ["zacheryph@gmail.com"]
+  spec.licenses      = ["MIT"]
 
   spec.summary       = %q(Go's defer... for Ruby)
   spec.description   = %q(Go's defer functionality in ruby. Never forget to do something.)
@@ -20,5 +21,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "minitest", "~> 5.8"
 end
