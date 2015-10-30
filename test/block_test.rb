@@ -12,4 +12,24 @@ describe Defer do
 
     assert read_output == "deferred\n"
   end
+
+  it "runs deferred blocks last" do
+    Defer.run do
+      defer { puts "2" }
+      puts "1"
+    end
+
+    assert read_output == "1\n2\n"
+  end
+
+  it "runs deferred blocks in FIFO order" do
+    Defer.run do
+      defer { puts "4" }
+      puts "1"
+      defer { puts "3" }
+      puts "2"
+    end
+
+    assert read_output == "1\n2\n3\n4\n"
+  end
 end
