@@ -1,4 +1,4 @@
-require "godefer/version"
+require "defer/version"
 
 module Godefer
   # Your code goes here...

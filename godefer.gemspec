@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'godefer/version'
+require 'defer/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "godefer"
-  spec.version       = Godefer::VERSION
+  spec.version       = Defer::VERSION
   spec.authors       = ["Zachery Hostens"]
   spec.email         = ["zacheryph@gmail.com"]
 
