@@ -3,17 +3,17 @@ require 'delegate'
 module Defer
   class Block < SimpleDelegator
     def self.run(base, &block)
-      d = self.new(base).run(&block)
+      self.new(base).run(&block)
     end
 
     def run(&block)
-      ret = self.instance_eval &block
+      ret = self.instance_eval(&block)
       _cleanup
       ret
     end
 
     def defer(&block)
-      _stack.unshift block
+      _stack.unshift(block)
     end
 
     private
