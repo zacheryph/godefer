@@ -8,6 +8,7 @@ module Defer
 
     def run(&block)
       ret = instance_eval(&block)
+    ensure
       _cleanup
       ret
     end
