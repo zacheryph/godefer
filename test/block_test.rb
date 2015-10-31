@@ -32,4 +32,17 @@ describe Defer do
 
     assert read_output == "1\n2\n3\n4\n"
   end
+
+  it "runs deferred blocks when exception is raised" do
+    begin
+      Defer.run do
+        defer { puts "1" }
+        raise Exception.new("wee")
+      end
+    rescue Exception => e
+      nil
+    end
+
+    assert read_output == "1\n"
+  end
 end
