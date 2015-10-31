@@ -8,8 +8,3 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task default: :test
-
-desc "Open irb session with library loaded"
-task :console do
-  sh "irb -rubygems -Ilib -rgodefer"
-end
