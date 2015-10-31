@@ -45,4 +45,42 @@ describe Defer do
 
     assert read_output == "1\n"
   end
+
+  it "bubbles exceptions that happen" do
+    assert_raises Exception do
+      Defer.run do
+        raise Exception.new("wee")
+      end
+    end
+  end
+
+  it "prevents exception bubbling if recovered" do
+    Defer.run do
+      defer do
+        if ex = recover
+          puts ex.message
+        end
+      end
+
+      raise Exception.new("wee")
+    end
+
+    assert read_output == "wee\n"
+  end
+
+  it "gives nil for recover if no exception" do
+    Defer.run do
+      defer { puts "3" }
+
+      defer do
+        if ex = recover
+          puts ex.message
+        end
+      end
+
+      defer { puts "1" }
+    end
+
+    assert read_output == "1\n3\n"
+  end
 end

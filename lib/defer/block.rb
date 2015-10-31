@@ -8,13 +8,21 @@ module Defer
 
     def run(&block)
       ret = instance_eval(&block)
+    rescue Exception => e
+      @_exception = e
     ensure
       _cleanup
+      raise @_exception if @_exception && !@_recovered
       ret
     end
 
     def defer(&block)
       _stack.unshift(block)
+    end
+
+    def recover
+      @_recovered = true
+      @_exception
     end
 
     private
