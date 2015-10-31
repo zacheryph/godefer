@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class TestMock
   include Defer
   attr_accessor :mock, :inst_var
