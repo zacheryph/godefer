@@ -39,6 +39,24 @@ Defer.run do
 end
 ```
 
+Deferred blocks are handled in a LIFO ordering, to ensure any operations work their way _back up_ to ensure any dependencies are closed out properly.
+
+```ruby
+Defer.run do
+  puts "opening"
+  defer { puts "closing" }
+  puts "start filter"
+  defer { puts "stop filter" }
+  # ...
+end
+
+# Output:
+#   opening
+#   start filter
+#   stop filter
+#   closing
+```
+
 ### Module Usage
 
 Similar example where we are doing a bunch of stuff within a class.
@@ -58,18 +76,38 @@ class Audit
     end
   end
 
-  def opening
-    # ...
-  end
-
-  def helper
-    # ...
-  end
-
-  def closing
-    # ...
-  end
+  def opening ; "..." ; end
+  def helper  ; "..." ; end
+  def closing ; "..." ; end
 end
+```
+
+### Recovering Exceptions
+
+Exceptions raised can be recovered within a deferred block.  If an exception is recovered within a defer block, the exception is stopped.  If an exception is raised, and `recover` is not called in a deferred method the exception will be raised from the `Defer.run` or `with_defer` block.  All Deferred blocks reached get called regardless of an exception being raised or not.
+
+```ruby
+Defer.run do
+  defer do
+    if ex = recover
+      puts "We stopped an exception: #{ex}"
+    end
+  end
+
+  raise StandardError.new("Important Message")
+end
+# Output:
+#   We stopped an exception: Important Message
+
+Defer.run do
+  defer { puts "see" }
+  raise StandardError.new("Error")
+end
+# Output:
+#   see
+#
+# => StandardError: Error
+# => from (pry):3:in `block in __pry__'
 ```
 
 ## Development
