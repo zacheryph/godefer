@@ -1,5 +1,7 @@
 # Godefer
 
+[![Gem Version](https://img.shields.io/gem/v/godefer.svg)](https://rubygems.org/gems/godefer)
+[![License](https://img.shields.io/badge/license-mit-blue.svg)](https://raw.githubusercontent.com/zacheryph/godefer/master/LICENSE)
 [![Build Status](https://travis-ci.org/zacheryph/godefer.svg?branch=master)](https://travis-ci.org/zacheryph/godefer)
 [![Code Climate](https://codeclimate.com/github/zacheryph/godefer/badges/gpa.svg)](https://codeclimate.com/github/zacheryph/godefer)
 [![Test Coverage](https://codeclimate.com/github/zacheryph/godefer/badges/coverage.svg)](https://codeclimate.com/github/zacheryph/godefer/coverage)
