@@ -4,11 +4,11 @@ notifications:
     urls:
       - https://zro.net/lita/travis
 rvm:
-  - 2.0.0-p647
   - 2.1.7
   - 2.2.3
-  - jruby-1.7.22
-  - jruby-9.0.3.0
-  - rbx-2.4.1
-  - rbx-2.5.8
+  - 2.3.0
+  - jruby-1.7.23
+  - jruby-9.0.4.0
+  - rbx-2.10
+  - rbx-2.11
 before_install: gem install bundler -v 1.10.6
