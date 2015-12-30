@@ -1,4 +1,8 @@
 language: ruby
+notifications:
+  webhooks:
+    urls:
+      - https://zro.net/lita/travis
 rvm:
   - 2.0.0-p647
   - 2.1.7
