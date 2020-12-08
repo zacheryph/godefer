@@ -1,9 +1,5 @@
 require 'simplecov'
-require 'simplecov-json'
-SimpleCov.start do
-  formatter SimpleCov::Formatter::JSONFormatter
-end
-
+SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'godefer'
