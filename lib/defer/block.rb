@@ -12,7 +12,7 @@ module Defer
       @_exception = e
     ensure
       _cleanup
-      raise @_exception if @_exception && !@_recovered
+      raise @_exception if defined?(@_exception) && !defined?(@_recovered)
       ret
     end
 
@@ -22,7 +22,7 @@ module Defer
 
     def recover
       @_recovered = true
-      @_exception
+      defined?(@_exception) && @_exception
     end
 
     private

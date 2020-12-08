@@ -39,7 +39,7 @@ describe Defer do
         defer { puts "1" }
         raise Exception.new("wee")
       end
-    rescue Exception => e
+    rescue Exception
       nil
     end
 

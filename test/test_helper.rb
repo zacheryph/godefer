@@ -1,5 +1,9 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+require 'simplecov'
+require 'simplecov-json'
+SimpleCov.start do
+  formatter SimpleCov::Formatter::JSONFormatter
+end
+
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'godefer'
